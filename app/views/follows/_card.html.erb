@@ -24,16 +24,20 @@
 
       <!-- Edit link follow start -->
       <div class="col">
-        <%= link_to edit_follow_url(follow), class: "btn btn-block btn-outline-secondary" do %>
-          <i class="fas fa-edit"></i>
+        <% if current_user == @follow.follower %>
+          <%= link_to edit_follow_url(follow), class: "btn btn-block btn-sm btn-outline-secondary" do %>
+            <i class="fas fa-edit"></i>
+          <% end %>
         <% end %>
       </div>
       <!-- Edit link follow end -->
 
       <!-- Delete link follow start -->
       <div class="col">
-        <%= link_to follow, method: :delete, data: { confirm: "Do you really want to delete this follow?" }, class: "btn btn-block btn-outline-secondary" do %>
-          <i class="fas fa-trash-alt"></i>
+        <% if current_user == @follow.follower %>
+          <%= link_to follow, method: :delete, data: { confirm: "Do you really want to delete this follow?" }, class: "btn btn-block btn-outline-secondary" do %>
+            <i class="fas fa-trash-alt"></i>
+          <% end %>
         <% end %>
       </div>
       <!-- Delete link follow end -->
