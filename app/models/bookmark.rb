@@ -1,6 +1,9 @@
 class Bookmark < ApplicationRecord
   # Direct associations
 
+  belongs_to :post,
+             :counter_cache => true
+
   belongs_to :bookmarker,
              :class_name => "User",
              :counter_cache => true

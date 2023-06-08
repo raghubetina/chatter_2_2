@@ -4,6 +4,8 @@ RSpec.describe Post, type: :model do
   
     describe "Direct Associations" do
 
+    it { should have_many(:bookmarks) }
+
     it { should have_many(:likes) }
 
     it { should have_many(:comments) }
