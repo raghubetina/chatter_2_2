@@ -1,0 +1,46 @@
+<div class="card mb-3">
+  <h2 class="card-header h4">
+    Bookmark #<%= bookmark.id %>
+  </h2>
+
+  <div class="card-body">
+    <dl class="mb-1">
+      <dt>Bookmarker</dt>
+      <!-- Display bookmarker_id start -->
+      <dd><%= bookmark.bookmarker_id %></dd>
+      <!-- Display bookmarker_id end -->
+
+      <dt>Post</dt>
+      <!-- Display post_id start -->
+      <dd><%= bookmark.post_id %></dd>
+      <!-- Display post_id end -->
+
+    </dl>
+
+    <div class="row">
+      <div class="col">
+        <%= link_to_show_or_back bookmark, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
+      </div>
+
+      <!-- Edit link bookmark start -->
+      <div class="col">
+        <%= link_to edit_bookmark_url(bookmark), class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-edit"></i>
+        <% end %>
+      </div>
+      <!-- Edit link bookmark end -->
+
+      <!-- Delete link bookmark start -->
+      <div class="col">
+        <%= link_to bookmark, method: :delete, data: { confirm: "Do you really want to delete this bookmark?" }, class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+      </div>
+      <!-- Delete link bookmark end -->
+    </div>
+  </div>
+
+  <div class="card-footer text-muted">
+    Last updated <%= time_ago_in_words(bookmark.updated_at) %> ago
+  </div>
+</div>
