@@ -18,6 +18,14 @@ class PostResource < ApplicationResource
 
   # Indirect associations
 
+  has_many :author_followers, resource: UserResource, primary_key: :author_id do
+    assign_each do |post, users|
+      users.select do |u|
+        u.id.in?(post.author_followers.map(&:id))
+      end
+    end
+  end
+
   has_many :fans_followers, resource: UserResource do
     assign_each do |post, users|
       users.select do |u|
@@ -58,6 +66,12 @@ class PostResource < ApplicationResource
   filter :follower_id, :integer do
     eq do |scope, value|
       scope.eager_load(:fans_followers).where(:follows => {:follower_id => value})
+    end
+  end
+
+  filter :follower_id, :integer do
+    eq do |scope, value|
+      scope.eager_load(:author_followers).where(:follows => {:follower_id => value})
     end
   end
 end

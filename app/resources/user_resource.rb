@@ -35,6 +35,14 @@ class UserResource < ApplicationResource
 
   # Indirect associations
 
+  has_many :leaders_own_posts, resource: PostResource do
+    assign_each do |user, posts|
+      posts.select do |p|
+        p.id.in?(user.leaders_own_posts.map(&:id))
+      end
+    end
+  end
+
   has_many :leaders_liked_posts, resource: PostResource do
     assign_each do |user, posts|
       posts.select do |p|
@@ -63,6 +71,12 @@ class UserResource < ApplicationResource
   filter :post_id, :integer do
     eq do |scope, value|
       scope.eager_load(:leaders_commented_posts).where(:comments => {:post_id => value})
+    end
+  end
+
+  filter :author_id, :integer do
+    eq do |scope, value|
+      scope.eager_load(:leaders_own_posts).where(:posts => {:author_id => value})
     end
   end
 end
