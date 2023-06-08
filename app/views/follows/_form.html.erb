@@ -28,30 +28,9 @@
   </div>
   <!-- Label and input for leader_id end -->
   <!-- Label and input for follower_id start -->
-  <div class="form-group">
-    <% follower_class = "form-control" %>
-    <% follower_was_invalid = follow.errors.include?(:follower) %>
-
-    <% if was_validated %>
-      <% if follower_was_invalid %>
-        <% follower_class << " is-invalid" %>
-      <% else %>
-        <% follower_class << " is-valid" %>
-      <% end %>
-    <% end %>
-
-    <%= f.label :follower_id %>
-    <!-- Input for follower_id start -->
-    <%= f.collection_select :follower_id, User.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for follower_id end -->
-    <% if follower_was_invalid %>
-      <% follow.errors.full_messages_for(:follower).each do |message| %>
-        <div class="invalid-feedback d-flex">
-          <%= message %>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
+  <!-- Input for "follower_id" start -->
+  <%= f.hidden_field :follower_id, value: current_user.id %>
+  <!-- Input for "follower_id" end -->
   <!-- Label and input for follower_id end -->
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>
