@@ -24,16 +24,20 @@
 
       <!-- Edit link post start -->
       <div class="col">
-        <%= link_to edit_post_url(post), class: "btn btn-block btn-outline-secondary" do %>
-          <i class="fas fa-edit"></i>
+        <% if current_user == @post.author %>
+          <%= link_to edit_post_url(post), class: "btn btn-block btn-sm btn-outline-secondary" do %>
+            <i class="fas fa-edit"></i>
+          <% end %>
         <% end %>
       </div>
       <!-- Edit link post end -->
 
       <!-- Delete link post start -->
       <div class="col">
-        <%= link_to post, method: :delete, data: { confirm: "Do you really want to delete this post?" }, class: "btn btn-block btn-outline-secondary" do %>
-          <i class="fas fa-trash-alt"></i>
+        <% if current_user == @post.author %>
+          <%= link_to post, method: :delete, data: { confirm: "Do you really want to delete this post?" }, class: "btn btn-block btn-outline-secondary" do %>
+            <i class="fas fa-trash-alt"></i>
+          <% end %>
         <% end %>
       </div>
       <!-- Delete link post end -->
