@@ -39,6 +39,8 @@ group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem "listen", ">= 3.0.5", "< 3.2"
   gem "web-console", ">= 3.3.0"
+  gem "rails-erd"
+  gem "annotate"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -47,6 +49,7 @@ gem "coffee-rails"
 gem "devise", "~> 4.7.2"
 gem "dry-configurable", "0.13.0"
 gem "dry-core", "0.7.1"
+gem "faker"
 gem "graphiti", "1.3.5"
 gem "graphiti-rails", github: "firstdraft/graphiti-rails", branch: "develop"
 gem "ideas_generators", github: "firstdraft/ideas_generators"
@@ -61,7 +64,6 @@ gem "web_git", github: "firstdraft/web_git", group: :development
 
 group :development, :test do
   gem "factory_bot_rails"
-  gem "faker"
   gem "graphiti_spec_helpers"
 end
 
