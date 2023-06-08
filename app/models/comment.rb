@@ -33,7 +33,9 @@ class Comment < ApplicationRecord
 
   # Validations
 
-  validates :body, presence: true
+  validates :body,
+    presence: true,
+    length: { maximum: 280 }
 
   # Scopes
 

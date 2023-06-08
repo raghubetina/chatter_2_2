@@ -32,6 +32,12 @@ class Like < ApplicationRecord
 
   # Validations
 
+  validates :user_id,
+    uniqueness: { 
+      scope: :post_id,
+      message: "has already liked this post"
+    }
+
   # Scopes
 
   def to_s

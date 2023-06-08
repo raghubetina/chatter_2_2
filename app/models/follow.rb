@@ -33,6 +33,12 @@ class Follow < ApplicationRecord
 
   # Validations
 
+  validates :follower_id,
+    uniqueness: { 
+      scope: :leader_id,
+      message: "already follows this user"
+    }
+
   # Scopes
 
   def to_s
