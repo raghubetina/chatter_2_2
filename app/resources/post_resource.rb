@@ -18,6 +18,9 @@ class PostResource < ApplicationResource
 
   # Indirect associations
 
+  many_to_many :bookmarkers,
+               resource: UserResource
+
   has_many :author_followers, resource: UserResource, primary_key: :author_id do
     assign_each do |post, users|
       users.select do |u|

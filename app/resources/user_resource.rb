@@ -35,6 +35,9 @@ class UserResource < ApplicationResource
 
   # Indirect associations
 
+  many_to_many :bookmarked_posts,
+               resource: PostResource
+
   has_many :leaders_own_posts, resource: PostResource do
     assign_each do |user, posts|
       posts.select do |p|
