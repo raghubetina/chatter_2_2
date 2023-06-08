@@ -16,6 +16,10 @@ class Post < ApplicationRecord
 
   # Indirect associations
 
+  has_many   :commenters_followers,
+             :through => :commenters,
+             :source => :followers
+
   # Validations
 
   validates :body, :presence => true

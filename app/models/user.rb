@@ -30,6 +30,10 @@ class User < ApplicationRecord
 
   # Indirect associations
 
+  has_many   :leaders_commented_posts,
+             :through => :leaders,
+             :source => :commented_posts
+
   # Validations
 
   validates :username, :uniqueness => true
