@@ -7,6 +7,8 @@ class PostResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :bookmarks
+
   has_many   :likes
 
   has_many   :comments
