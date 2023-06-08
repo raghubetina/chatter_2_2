@@ -35,6 +35,22 @@ class UserResource < ApplicationResource
 
   # Indirect associations
 
+  has_many :followers, resource: UserResource do
+    assign_each do |user, users|
+      users.select do |u|
+        u.id.in?(user.followers.map(&:id))
+      end
+    end
+  end
+
+  has_many :leaders, resource: UserResource do
+    assign_each do |user, users|
+      users.select do |u|
+        u.id.in?(user.leaders.map(&:id))
+      end
+    end
+  end
+
   many_to_many :commented_posts,
                resource: PostResource
 
@@ -86,6 +102,18 @@ class UserResource < ApplicationResource
   filter :author_id, :integer do
     eq do |scope, value|
       scope.eager_load(:leaders_own_posts).where(:posts => {:author_id => value})
+    end
+  end
+
+  filter :follower_id, :integer do
+    eq do |scope, value|
+      scope.eager_load(:followers).where(:follows => {:follower_id => value})
+    end
+  end
+
+  filter :leader_id, :integer do
+    eq do |scope, value|
+      scope.eager_load(:leaders).where(:follows => {:leader_id => value})
     end
   end
 end
