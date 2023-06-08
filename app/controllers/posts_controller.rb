@@ -5,7 +5,7 @@ class PostsController < ApplicationController
 
   # GET /posts
   def index
-    @posts = Post.all
+    @posts = Post.page(params[:page]).per(10)
   end
 
   # GET /posts/1
