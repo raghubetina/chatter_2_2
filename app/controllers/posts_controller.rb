@@ -5,7 +5,8 @@ class PostsController < ApplicationController
 
   # GET /posts
   def index
-    @posts = Post.page(params[:page]).per(10)
+    @q = Post.ransack(params[:q])
+    @posts = @q.result(:distinct => true).includes(:author, :comments, :likes, :bookmarks, :commenters_followers, :bookmarkers_followers, :fans_followers, :author_followers, :bookmarkers, :fans, :commenters).page(params[:page]).per(10)
   end
 
   # GET /posts/1
