@@ -7,6 +7,9 @@ class LikeResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :fan,
+             resource: UserResource
+
   # Indirect associations
 
 end
