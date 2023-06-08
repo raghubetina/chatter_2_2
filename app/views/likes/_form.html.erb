@@ -16,7 +16,7 @@
 
     <%= f.label :fan_id %>
     <!-- Input for fan_id start -->
-    <%= f.number_field :fan_id, class: fan_class, placeholder: "Enter fan" %>
+    <%= f.collection_select :fan_id, User.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for fan_id end -->
     <% if fan_was_invalid %>
       <% like.errors.full_messages_for(:fan).each do |message| %>
