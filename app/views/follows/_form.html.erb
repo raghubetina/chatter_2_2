@@ -1,0 +1,57 @@
+<% was_validated = follow.errors.any? %>
+
+<%= form_with(model: follow, local: true, novalidate: true, class: "mb-3") do |f| %>
+  <!-- Label and input for leader_id start -->
+  <div class="form-group">
+    <% leader_class = "form-control" %>
+    <% leader_was_invalid = follow.errors.include?(:leader) %>
+
+    <% if was_validated %>
+      <% if leader_was_invalid %>
+        <% leader_class << " is-invalid" %>
+      <% else %>
+        <% leader_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :leader_id %>
+    <!-- Input for leader_id start -->
+    <%= f.number_field :leader_id, class: leader_class, placeholder: "Enter leader" %>
+    <!-- Input for leader_id end -->
+    <% if leader_was_invalid %>
+      <% follow.errors.full_messages_for(:leader).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for leader_id end -->
+  <!-- Label and input for follower_id start -->
+  <div class="form-group">
+    <% follower_class = "form-control" %>
+    <% follower_was_invalid = follow.errors.include?(:follower) %>
+
+    <% if was_validated %>
+      <% if follower_was_invalid %>
+        <% follower_class << " is-invalid" %>
+      <% else %>
+        <% follower_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :follower_id %>
+    <!-- Input for follower_id start -->
+    <%= f.number_field :follower_id, class: follower_class, placeholder: "Enter follower" %>
+    <!-- Input for follower_id end -->
+    <% if follower_was_invalid %>
+      <% follow.errors.full_messages_for(:follower).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for follower_id end -->
+  <%= f.button class: "btn btn-outline-secondary btn-block" %>
+<% end %>
