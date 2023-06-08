@@ -28,30 +28,9 @@
   </div>
   <!-- Label and input for body end -->
   <!-- Label and input for author_id start -->
-  <div class="form-group">
-    <% author_class = "form-control" %>
-    <% author_was_invalid = post.errors.include?(:author) %>
-
-    <% if was_validated %>
-      <% if author_was_invalid %>
-        <% author_class << " is-invalid" %>
-      <% else %>
-        <% author_class << " is-valid" %>
-      <% end %>
-    <% end %>
-
-    <%= f.label :author_id %>
-    <!-- Input for author_id start -->
-    <%= f.collection_select :author_id, User.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for author_id end -->
-    <% if author_was_invalid %>
-      <% post.errors.full_messages_for(:author).each do |message| %>
-        <div class="invalid-feedback d-flex">
-          <%= message %>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
+  <!-- Input for "author_id" start -->
+  <%= f.hidden_field :author_id, value: current_user.id %>
+  <!-- Input for "author_id" end -->
   <!-- Label and input for author_id end -->
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>
