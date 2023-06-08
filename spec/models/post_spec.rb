@@ -12,5 +12,7 @@ RSpec.describe Post, type: :model do
 
     describe "Validations" do
 
+    it { should validate_presence_of(:body) }
+
     end
 end
