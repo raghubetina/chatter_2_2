@@ -18,6 +18,9 @@ class PostResource < ApplicationResource
 
   # Indirect associations
 
+  many_to_many :commenters,
+               resource: UserResource
+
   many_to_many :fans,
                resource: UserResource
 

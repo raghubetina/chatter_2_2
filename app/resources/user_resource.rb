@@ -35,6 +35,9 @@ class UserResource < ApplicationResource
 
   # Indirect associations
 
+  many_to_many :commented_posts,
+               resource: PostResource
+
   many_to_many :liked_posts,
                resource: PostResource
 
