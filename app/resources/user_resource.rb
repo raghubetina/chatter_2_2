@@ -12,6 +12,10 @@ class UserResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :own_posts,
+             resource: PostResource,
+             foreign_key: :author_id
+
   has_many   :follows_as_follower,
              resource: FollowResource,
              foreign_key: :follower_id
