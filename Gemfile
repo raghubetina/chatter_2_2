@@ -58,6 +58,7 @@ gem "rubocop-rails", "2.5.2", require: false
 gem "shoulda-matchers"
 gem "sprockets", "~> 3.7"
 gem "sprockets-rails", require: "sprockets/railtie"
+gem "strip_attributes"
 gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 gem "vandal_ui", "~> 0.4"
 gem "web_git", github: "firstdraft/web_git", group: :development

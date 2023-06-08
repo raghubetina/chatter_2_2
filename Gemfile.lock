@@ -419,6 +419,8 @@ GEM
     sqlite3 (1.6.3)
       mini_portile2 (~> 2.8.0)
     sqlite3 (1.6.3-x86_64-linux)
+    strip_attributes (1.13.0)
+      activemodel (>= 3.0, < 8.0)
     thor (1.2.2)
     thread_safe (0.3.6)
     tilt (2.2.0)
@@ -489,6 +491,7 @@ DEPENDENCIES
   sprockets (~> 3.7)
   sprockets-rails
   sqlite3
+  strip_attributes
   tzinfo-data
   vandal_ui (~> 0.4)
   web-console (>= 3.3.0)

@@ -98,9 +98,11 @@ class User < ApplicationRecord
 
   # Validations
 
-  validates :username, uniqueness: true
-
-  validates :username, presence: true
+  validates :username,
+    uniqueness: { case_sensitive: false },
+    presence: true,
+    length: { maximum: 15},
+    format: { with: /\A[A-Za-z0-9_]+\z/, message: "can only contain letters, numbers, and underscores" }
 
   # Scopes
 
