@@ -8,6 +8,11 @@ class UsersController < ApplicationController
 
   # GET /users/1
   def show
+    @bookmark = Bookmark.new
+    @like = Like.new
+    @comment = Comment.new
+    @post = Post.new
+    @follow = Follow.new
   end
 
   # GET /users/new
