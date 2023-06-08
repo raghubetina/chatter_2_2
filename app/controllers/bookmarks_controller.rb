@@ -4,25 +4,20 @@ class BookmarksController < ApplicationController
 
   before_action :set_bookmark, only: %i[show edit update destroy]
 
-  # GET /bookmarks
   def index
     @q = current_user.bookmarks.ransack(params[:q])
     @bookmarks = @q.result(distinct: true).includes(:bookmarker,
                                                     :post).page(params[:page]).per(10)
   end
 
-  # GET /bookmarks/1
   def show; end
 
-  # GET /bookmarks/new
   def new
     @bookmark = Bookmark.new
   end
 
-  # GET /bookmarks/1/edit
   def edit; end
 
-  # POST /bookmarks
   def create
     @bookmark = Bookmark.new(bookmark_params)
 
@@ -38,7 +33,6 @@ class BookmarksController < ApplicationController
     end
   end
 
-  # PATCH/PUT /bookmarks/1
   def update
     if @bookmark.update(bookmark_params)
       redirect_to @bookmark, notice: "Bookmark was successfully updated."
@@ -47,7 +41,6 @@ class BookmarksController < ApplicationController
     end
   end
 
-  # DELETE /bookmarks/1
   def destroy
     @bookmark.destroy
     message = "Bookmark was successfully deleted."
@@ -68,12 +61,10 @@ class BookmarksController < ApplicationController
     end
   end
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_bookmark
     @bookmark = Bookmark.find(params[:id])
   end
 
-  # Only allow a trusted parameter "white list" through.
   def bookmark_params
     params.require(:bookmark).permit(:bookmarker_id, :post_id)
   end
