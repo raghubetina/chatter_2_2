@@ -15,8 +15,10 @@
         <!-- Show link end -->
 
         <!-- Delete link start -->
-        <%= link_to bookmark, method: :delete, data: { confirm: "Do you really want to delete this bookmark" } do %>
-          <i class="fas fa-trash-alt"></i>
+        <% if current_user == bookmark.bookmarker %>
+          <%= link_to bookmark, method: :delete do %>
+            <i class="fas fa-trash-alt"></i>
+          <% end %>
         <% end %>
         <!-- Delete link end -->
 

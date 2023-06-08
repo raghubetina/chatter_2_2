@@ -24,16 +24,20 @@
 
       <!-- Edit link bookmark start -->
       <div class="col">
-        <%= link_to edit_bookmark_url(bookmark), class: "btn btn-block btn-outline-secondary" do %>
-          <i class="fas fa-edit"></i>
+        <% if current_user == @bookmark.bookmarker %>
+          <%= link_to edit_bookmark_url(bookmark), class: "btn btn-block btn-sm btn-outline-secondary" do %>
+            <i class="fas fa-edit"></i>
+          <% end %>
         <% end %>
       </div>
       <!-- Edit link bookmark end -->
 
       <!-- Delete link bookmark start -->
       <div class="col">
-        <%= link_to bookmark, method: :delete, data: { confirm: "Do you really want to delete this bookmark?" }, class: "btn btn-block btn-outline-secondary" do %>
-          <i class="fas fa-trash-alt"></i>
+        <% if current_user == @bookmark.bookmarker %>
+          <%= link_to bookmark, method: :delete, data: { confirm: "Do you really want to delete this bookmark?" }, class: "btn btn-block btn-outline-secondary" do %>
+            <i class="fas fa-trash-alt"></i>
+          <% end %>
         <% end %>
       </div>
       <!-- Delete link bookmark end -->

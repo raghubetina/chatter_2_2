@@ -1,4 +1,6 @@
 class BookmarksController < ApplicationController
+  before_action :current_user_must_be_bookmark_bookmarker, only: [:edit, :update, :destroy] 
+
   before_action :set_bookmark, only: [:show, :edit, :update, :destroy]
 
   # GET /bookmarks
@@ -57,6 +59,14 @@ class BookmarksController < ApplicationController
 
 
   private
+
+  def current_user_must_be_bookmark_bookmarker
+    set_bookmark
+    unless current_user == @bookmark.bookmarker
+      redirect_back fallback_location: root_path, alert: "You are not authorized for that."
+    end
+  end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_bookmark
       @bookmark = Bookmark.find(params[:id])
