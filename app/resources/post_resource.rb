@@ -18,6 +18,9 @@ class PostResource < ApplicationResource
 
   # Indirect associations
 
+  many_to_many :fans,
+               resource: UserResource
+
   many_to_many :bookmarkers,
                resource: UserResource
 
