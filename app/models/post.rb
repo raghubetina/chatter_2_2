@@ -1,6 +1,10 @@
 class Post < ApplicationRecord
   # Direct associations
 
+  belongs_to :author,
+             :class_name => "User",
+             :counter_cache => :own_posts_count
+
   # Indirect associations
 
   # Validations
