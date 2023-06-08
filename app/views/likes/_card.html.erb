@@ -7,12 +7,20 @@
     <dl class="mb-1">
       <dt>Fan</dt>
       <!-- Display fan_id start -->
-      <dd><%= like.fan_id %></dd>
+      <dd>
+        <% if @like.fan.present? %>
+          <%= link_to like.fan, like.fan %>
+        <% end %>
+      </dd>
       <!-- Display fan_id end -->
 
       <dt>Post</dt>
       <!-- Display post_id start -->
-      <dd><%= like.post_id %></dd>
+      <dd>
+        <% if @like.post.present? %>
+          <%= link_to like.post, like.post %>
+        <% end %>
+      </dd>
       <!-- Display post_id end -->
 
     </dl>

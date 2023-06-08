@@ -12,7 +12,11 @@
 
       <dt>Author</dt>
       <!-- Display author_id start -->
-      <dd><%= post.author_id %></dd>
+      <dd>
+        <% if @post.author.present? %>
+          <%= link_to post.author, post.author %>
+        <% end %>
+      </dd>
       <!-- Display author_id end -->
 
     </dl>

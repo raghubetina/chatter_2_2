@@ -7,12 +7,20 @@
     <dl class="mb-1">
       <dt>Commenter</dt>
       <!-- Display commenter_id start -->
-      <dd><%= comment.commenter_id %></dd>
+      <dd>
+        <% if @comment.commenter.present? %>
+          <%= link_to comment.commenter, comment.commenter %>
+        <% end %>
+      </dd>
       <!-- Display commenter_id end -->
 
       <dt>Post</dt>
       <!-- Display post_id start -->
-      <dd><%= comment.post_id %></dd>
+      <dd>
+        <% if @comment.post.present? %>
+          <%= link_to comment.post, comment.post %>
+        <% end %>
+      </dd>
       <!-- Display post_id end -->
 
       <dt>Body</dt>
