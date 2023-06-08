@@ -1,12 +1,7 @@
 <% was_validated = comment.errors.any? %>
 
 <%= form_with(model: comment, local: true, novalidate: true, class: "mb-3") do |f| %>
-  <!-- Label and input for commenter_id start -->
-  <!-- Input for "commenter_id" start -->
   <%= f.hidden_field :commenter_id, value: current_user.id %>
-  <!-- Input for "commenter_id" end -->
-  <!-- Label and input for commenter_id end -->
-  <!-- Label and input for post_id start -->
   <div class="form-group">
     <% post_class = "form-control" %>
     <% post_was_invalid = comment.errors.include?(:post) %>
@@ -20,9 +15,7 @@
     <% end %>
 
     <%= f.label :post_id %>
-    <!-- Input for post_id start -->
     <%= f.collection_select :post_id, Post.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for post_id end -->
     <% if post_was_invalid %>
       <% comment.errors.full_messages_for(:post).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -31,8 +24,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for post_id end -->
-  <!-- Label and input for body start -->
   <div class="form-group">
     <% body_class = "form-control" %>
     <% body_was_invalid = comment.errors.include?(:body) %>
@@ -46,9 +37,7 @@
     <% end %>
 
     <%= f.label :body %>
-    <!-- Input for body start -->
     <%= f.text_area :body, class: body_class, placeholder: "Enter body" %>
-    <!-- Input for body end -->
     <% if body_was_invalid %>
       <% comment.errors.full_messages_for(:body).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -57,6 +46,5 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for body end -->
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>

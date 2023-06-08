@@ -6,22 +6,18 @@
   <div class="card-body">
     <dl class="mb-1">
       <dt>Leader</dt>
-      <!-- Display leader_id start -->
       <dd>
         <% if @follow.leader.present? %>
           <%= link_to follow.leader, follow.leader %>
         <% end %>
       </dd>
-      <!-- Display leader_id end -->
 
       <dt>Follower</dt>
-      <!-- Display follower_id start -->
       <dd>
         <% if @follow.follower.present? %>
           <%= link_to follow.follower, follow.follower %>
         <% end %>
       </dd>
-      <!-- Display follower_id end -->
 
     </dl>
 
@@ -30,7 +26,6 @@
         <%= link_to_show_or_back follow, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
       </div>
 
-      <!-- Edit link follow start -->
       <div class="col">
         <% if current_user == @follow.follower %>
           <%= link_to edit_follow_url(follow), class: "btn btn-block btn-sm btn-outline-secondary" do %>
@@ -38,9 +33,7 @@
           <% end %>
         <% end %>
       </div>
-      <!-- Edit link follow end -->
 
-      <!-- Delete link follow start -->
       <div class="col">
         <% if current_user == @follow.follower %>
           <%= link_to follow, method: :delete, data: { confirm: "Do you really want to delete this follow?" }, class: "btn btn-block btn-outline-secondary" do %>
@@ -48,7 +41,6 @@
           <% end %>
         <% end %>
       </div>
-      <!-- Delete link follow end -->
     </div>
   </div>
 

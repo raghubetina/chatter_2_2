@@ -6,22 +6,18 @@
   <div class="card-body">
     <dl class="mb-1">
       <dt>Bookmarker</dt>
-      <!-- Display bookmarker_id start -->
       <dd>
         <% if @bookmark.bookmarker.present? %>
           <%= link_to bookmark.bookmarker, bookmark.bookmarker %>
         <% end %>
       </dd>
-      <!-- Display bookmarker_id end -->
 
       <dt>Post</dt>
-      <!-- Display post_id start -->
       <dd>
         <% if @bookmark.post.present? %>
           <%= link_to bookmark.post, bookmark.post %>
         <% end %>
       </dd>
-      <!-- Display post_id end -->
 
     </dl>
 
@@ -30,7 +26,6 @@
         <%= link_to_show_or_back bookmark, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
       </div>
 
-      <!-- Edit link bookmark start -->
       <div class="col">
         <% if current_user == @bookmark.bookmarker %>
           <%= link_to edit_bookmark_url(bookmark), class: "btn btn-block btn-sm btn-outline-secondary" do %>
@@ -38,9 +33,7 @@
           <% end %>
         <% end %>
       </div>
-      <!-- Edit link bookmark end -->
 
-      <!-- Delete link bookmark start -->
       <div class="col">
         <% if current_user == @bookmark.bookmarker %>
           <%= link_to bookmark, method: :delete, data: { confirm: "Do you really want to delete this bookmark?" }, class: "btn btn-block btn-outline-secondary" do %>
@@ -48,7 +41,6 @@
           <% end %>
         <% end %>
       </div>
-      <!-- Delete link bookmark end -->
     </div>
   </div>
 

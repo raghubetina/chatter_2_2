@@ -1,12 +1,7 @@
 <% was_validated = bookmark.errors.any? %>
 
 <%= form_with(model: bookmark, local: true, novalidate: true, class: "mb-3") do |f| %>
-  <!-- Label and input for bookmarker_id start -->
-  <!-- Input for "bookmarker_id" start -->
   <%= f.hidden_field :bookmarker_id, value: current_user.id %>
-  <!-- Input for "bookmarker_id" end -->
-  <!-- Label and input for bookmarker_id end -->
-  <!-- Label and input for post_id start -->
   <div class="form-group">
     <% post_class = "form-control" %>
     <% post_was_invalid = bookmark.errors.include?(:post) %>
@@ -20,9 +15,7 @@
     <% end %>
 
     <%= f.label :post_id %>
-    <!-- Input for post_id start -->
     <%= f.collection_select :post_id, Post.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for post_id end -->
     <% if post_was_invalid %>
       <% bookmark.errors.full_messages_for(:post).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -31,6 +24,5 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for post_id end -->
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>

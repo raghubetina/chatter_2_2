@@ -6,11 +6,9 @@
   <ul class="list-group list-group-flush">
     <% @user.leaders_liked_posts.each do |post| %>
       <li class="list-group-item d-flex align-items-center justify-content-between">
-        <!-- Show link start -->
         <a href="/posts/<%= post.id %>">
           <%= post %>
         </a>
-        <!-- Show link end -->
 
       </li>
     <% end %>

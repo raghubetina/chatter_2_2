@@ -1,7 +1,6 @@
 <% was_validated = follow.errors.any? %>
 
 <%= form_with(model: follow, local: true, novalidate: true, class: "mb-3") do |f| %>
-  <!-- Label and input for leader_id start -->
   <div class="form-group">
     <% leader_class = "form-control" %>
     <% leader_was_invalid = follow.errors.include?(:leader) %>
@@ -15,9 +14,7 @@
     <% end %>
 
     <%= f.label :leader_id %>
-    <!-- Input for leader_id start -->
     <%= f.collection_select :leader_id, User.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for leader_id end -->
     <% if leader_was_invalid %>
       <% follow.errors.full_messages_for(:leader).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -26,11 +23,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for leader_id end -->
-  <!-- Label and input for follower_id start -->
-  <!-- Input for "follower_id" start -->
   <%= f.hidden_field :follower_id, value: current_user.id %>
-  <!-- Input for "follower_id" end -->
-  <!-- Label and input for follower_id end -->
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>

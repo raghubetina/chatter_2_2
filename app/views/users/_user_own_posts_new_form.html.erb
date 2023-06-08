@@ -1,21 +1,11 @@
-<!-- Form post start -->
 <%= form_with(model: @post, local: true) do |f| %>
-<!-- Form post end -->
 
-  <!-- Label and input for body start -->
   <div class="form-group">
     <%= f.label :body %>
-    <!-- Input for body start -->
     <%= f.text_area :body, rows: "3", class: "form-control" %>
-    <!-- Input for body end -->
   </div>
-  <!-- Label and input for body end -->
 
-  <!-- Label and input for author_id start -->
-  <!-- Input for author_id start -->
   <%= f.hidden_field :author_id, value: @user.id %>
-  <!-- Input for author_id end -->
-  <!-- Label and input for author_id end -->
 
   <%= f.submit "Create post", class: "btn btn-block btn-outline-secondary" %>
 <% end %>

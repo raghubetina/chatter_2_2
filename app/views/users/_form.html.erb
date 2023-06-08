@@ -1,7 +1,6 @@
 <% was_validated = user.errors.any? %>
 
 <%= form_with(model: user, local: true, novalidate: true, class: "mb-3") do |f| %>
-  <!-- Label and input for username start -->
   <div class="form-group">
     <% username_class = "form-control" %>
     <% username_was_invalid = user.errors.include?(:username) %>
@@ -15,9 +14,7 @@
     <% end %>
 
     <%= f.label :username %>
-    <!-- Input for username start -->
     <%= f.text_field :username, class: username_class, placeholder: "Enter username" %>
-    <!-- Input for username end -->
     <% if username_was_invalid %>
       <% user.errors.full_messages_for(:username).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -26,8 +23,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for username end -->
-  <!-- Label and input for name start -->
   <div class="form-group">
     <% name_class = "form-control" %>
     <% name_was_invalid = user.errors.include?(:name) %>
@@ -41,9 +36,7 @@
     <% end %>
 
     <%= f.label :name %>
-    <!-- Input for name start -->
     <%= f.text_field :name, class: name_class, placeholder: "Enter name" %>
-    <!-- Input for name end -->
     <% if name_was_invalid %>
       <% user.errors.full_messages_for(:name).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -52,8 +45,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for name end -->
-  <!-- Label and input for bio start -->
   <div class="form-group">
     <% bio_class = "form-control" %>
     <% bio_was_invalid = user.errors.include?(:bio) %>
@@ -67,9 +58,7 @@
     <% end %>
 
     <%= f.label :bio %>
-    <!-- Input for bio start -->
     <%= f.text_area :bio, class: bio_class, placeholder: "Enter bio" %>
-    <!-- Input for bio end -->
     <% if bio_was_invalid %>
       <% user.errors.full_messages_for(:bio).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -78,8 +67,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for bio end -->
-  <!-- Label and input for link start -->
   <div class="form-group">
     <% link_class = "form-control" %>
     <% link_was_invalid = user.errors.include?(:link) %>
@@ -93,9 +80,7 @@
     <% end %>
 
     <%= f.label :link %>
-    <!-- Input for link start -->
     <%= f.text_field :link, class: link_class, placeholder: "Enter link" %>
-    <!-- Input for link end -->
     <% if link_was_invalid %>
       <% user.errors.full_messages_for(:link).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -104,8 +89,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for link end -->
-  <!-- Label and input for location start -->
   <div class="form-group">
     <% location_class = "form-control" %>
     <% location_was_invalid = user.errors.include?(:location) %>
@@ -119,9 +102,7 @@
     <% end %>
 
     <%= f.label :location %>
-    <!-- Input for location start -->
     <%= f.text_field :location, class: location_class, placeholder: "Enter location" %>
-    <!-- Input for location end -->
     <% if location_was_invalid %>
       <% user.errors.full_messages_for(:location).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -130,6 +111,5 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for location end -->
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>

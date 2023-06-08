@@ -1,22 +1,12 @@
-<!-- Form follow start -->
 <%= form_with(model: @follow, local: true) do |f| %>
-<!-- Form follow end -->
 
-  <!-- Label and input for leader_id start -->
-  <!-- Input for leader_id start -->
   <%= f.hidden_field :leader_id, value: @user.id %>
-  <!-- Input for leader_id end -->
-  <!-- Label and input for leader_id end -->
 
-  <!-- Label and input for follower_id start -->
   <div class="form-group">
     <%= f.label :follower_id %>
 
-    <!-- Input for follower_id start -->
     <%= f.text_field :follower_id, class: "form-control" %>
-    <!-- Input for follower_id end -->
   </div>
-  <!-- Label and input for follower_id end -->
 
   <%= f.submit "Create follow", class: "btn btn-block btn-outline-secondary" %>
 <% end %>
