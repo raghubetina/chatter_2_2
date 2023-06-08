@@ -1,0 +1,46 @@
+<div class="card mb-3">
+  <h2 class="card-header h4">
+    Post #<%= post.id %>
+  </h2>
+
+  <div class="card-body">
+    <dl class="mb-1">
+      <dt>Body</dt>
+      <!-- Display body start -->
+      <dd><%= post.body %></dd>
+      <!-- Display body end -->
+
+      <dt>Author</dt>
+      <!-- Display author_id start -->
+      <dd><%= post.author_id %></dd>
+      <!-- Display author_id end -->
+
+    </dl>
+
+    <div class="row">
+      <div class="col">
+        <%= link_to_show_or_back post, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
+      </div>
+
+      <!-- Edit link post start -->
+      <div class="col">
+        <%= link_to edit_post_url(post), class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-edit"></i>
+        <% end %>
+      </div>
+      <!-- Edit link post end -->
+
+      <!-- Delete link post start -->
+      <div class="col">
+        <%= link_to post, method: :delete, data: { confirm: "Do you really want to delete this post?" }, class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+      </div>
+      <!-- Delete link post end -->
+    </div>
+  </div>
+
+  <div class="card-footer text-muted">
+    Last updated <%= time_ago_in_words(post.updated_at) %> ago
+  </div>
+</div>
