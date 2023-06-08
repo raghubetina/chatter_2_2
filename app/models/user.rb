@@ -1,6 +1,11 @@
 class User < ApplicationRecord
   # Direct associations
 
+  has_many   :follows_as_leader,
+             :class_name => "Follow",
+             :foreign_key => "leader_id",
+             :dependent => :destroy
+
   # Indirect associations
 
   # Validations
