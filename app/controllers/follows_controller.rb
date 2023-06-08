@@ -5,7 +5,7 @@ class FollowsController < ApplicationController
 
   # GET /follows
   def index
-    @follows = Follow.all
+    @follows = current_user.follows_as_follower.page(params[:page]).per(10)
   end
 
   # GET /follows/1
