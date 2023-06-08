@@ -63,3 +63,4 @@ group :test do
   gem 'database_cleaner'
 end
 gem 'rack-cors'
+gem 'devise-jwt', '~> 0.8.1'
