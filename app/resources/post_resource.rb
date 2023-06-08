@@ -59,28 +59,27 @@ class PostResource < ApplicationResource
     end
   end
 
-
   filter :follower_id, :integer do
     eq do |scope, value|
-      scope.eager_load(:commenters_followers).where(:follows => {:follower_id => value})
+      scope.eager_load(:commenters_followers).where(follows: { follower_id: value })
     end
   end
 
   filter :follower_id, :integer do
     eq do |scope, value|
-      scope.eager_load(:bookmarkers_followers).where(:follows => {:follower_id => value})
+      scope.eager_load(:bookmarkers_followers).where(follows: { follower_id: value })
     end
   end
 
   filter :follower_id, :integer do
     eq do |scope, value|
-      scope.eager_load(:fans_followers).where(:follows => {:follower_id => value})
+      scope.eager_load(:fans_followers).where(follows: { follower_id: value })
     end
   end
 
   filter :follower_id, :integer do
     eq do |scope, value|
-      scope.eager_load(:author_followers).where(:follows => {:follower_id => value})
+      scope.eager_load(:author_followers).where(follows: { follower_id: value })
     end
   end
 end

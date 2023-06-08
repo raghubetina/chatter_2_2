@@ -2,11 +2,11 @@ class Like < ApplicationRecord
   # Direct associations
 
   belongs_to :post,
-             :counter_cache => true
+             counter_cache: true
 
   belongs_to :fan,
-             :class_name => "User",
-             :counter_cache => true
+             class_name: "User",
+             counter_cache: true
 
   # Indirect associations
 
@@ -17,5 +17,4 @@ class Like < ApplicationRecord
   def to_s
     fan.to_s
   end
-
 end

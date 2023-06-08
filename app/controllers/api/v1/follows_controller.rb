@@ -13,7 +13,7 @@ class Api::V1::FollowsController < Api::V1::GraphitiController
     follow = FollowResource.build(params)
 
     if follow.save
-      render jsonapi: follow, status: 201
+      render jsonapi: follow, status: :created
     else
       render jsonapi_errors: follow
     end
@@ -33,7 +33,7 @@ class Api::V1::FollowsController < Api::V1::GraphitiController
     follow = FollowResource.find(params)
 
     if follow.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: follow
     end

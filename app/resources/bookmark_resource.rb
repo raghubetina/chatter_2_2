@@ -13,5 +13,4 @@ class BookmarkResource < ApplicationResource
              resource: UserResource
 
   # Indirect associations
-
 end

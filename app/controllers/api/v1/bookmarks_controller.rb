@@ -13,7 +13,7 @@ class Api::V1::BookmarksController < Api::V1::GraphitiController
     bookmark = BookmarkResource.build(params)
 
     if bookmark.save
-      render jsonapi: bookmark, status: 201
+      render jsonapi: bookmark, status: :created
     else
       render jsonapi_errors: bookmark
     end
@@ -33,7 +33,7 @@ class Api::V1::BookmarksController < Api::V1::GraphitiController
     bookmark = BookmarkResource.find(params)
 
     if bookmark.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: bookmark
     end

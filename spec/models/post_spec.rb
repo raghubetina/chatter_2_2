@@ -1,9 +1,7 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Post, type: :model do
-  
-    describe "Direct Associations" do
-
+  describe "Direct Associations" do
     it { should have_many(:bookmarks) }
 
     it { should have_many(:likes) }
@@ -11,11 +9,9 @@ RSpec.describe Post, type: :model do
     it { should have_many(:comments) }
 
     it { should belong_to(:author) }
+  end
 
-    end
-
-    describe "InDirect Associations" do
-
+  describe "InDirect Associations" do
     it { should have_many(:commenters) }
 
     it { should have_many(:fans) }
@@ -29,12 +25,9 @@ RSpec.describe Post, type: :model do
     it { should have_many(:bookmarkers_followers) }
 
     it { should have_many(:commenters_followers) }
+  end
 
-    end
-
-    describe "Validations" do
-
+  describe "Validations" do
     it { should validate_presence_of(:body) }
-
-    end
+  end
 end

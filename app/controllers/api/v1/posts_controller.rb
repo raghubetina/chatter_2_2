@@ -13,7 +13,7 @@ class Api::V1::PostsController < Api::V1::GraphitiController
     post = PostResource.build(params)
 
     if post.save
-      render jsonapi: post, status: 201
+      render jsonapi: post, status: :created
     else
       render jsonapi_errors: post
     end
@@ -33,7 +33,7 @@ class Api::V1::PostsController < Api::V1::GraphitiController
     post = PostResource.find(params)
 
     if post.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: post
     end

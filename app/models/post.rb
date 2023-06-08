@@ -2,56 +2,55 @@ class Post < ApplicationRecord
   # Direct associations
 
   has_many   :bookmarks,
-             :dependent => :destroy
+             dependent: :destroy
 
   has_many   :likes,
-             :dependent => :destroy
+             dependent: :destroy
 
   has_many   :comments,
-             :dependent => :destroy
+             dependent: :destroy
 
   belongs_to :author,
-             :class_name => "User",
-             :counter_cache => :own_posts_count
+             class_name: "User",
+             counter_cache: :own_posts_count
 
   # Indirect associations
 
   has_many   :commenters,
-             :through => :comments,
-             :source => :commenter
+             through: :comments,
+             source: :commenter
 
   has_many   :fans,
-             :through => :likes,
-             :source => :fan
+             through: :likes,
+             source: :fan
 
   has_many   :bookmarkers,
-             :through => :bookmarks,
-             :source => :bookmarker
+             through: :bookmarks,
+             source: :bookmarker
 
   has_many   :author_followers,
-             :through => :author,
-             :source => :followers
+             through: :author,
+             source: :followers
 
   has_many   :fans_followers,
-             :through => :fans,
-             :source => :followers
+             through: :fans,
+             source: :followers
 
   has_many   :bookmarkers_followers,
-             :through => :bookmarkers,
-             :source => :followers
+             through: :bookmarkers,
+             source: :followers
 
   has_many   :commenters_followers,
-             :through => :commenters,
-             :source => :followers
+             through: :commenters,
+             source: :followers
 
   # Validations
 
-  validates :body, :presence => true
+  validates :body, presence: true
 
   # Scopes
 
   def to_s
     body
   end
-
 end

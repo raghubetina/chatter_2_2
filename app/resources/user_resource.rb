@@ -92,28 +92,27 @@ class UserResource < ApplicationResource
     end
   end
 
-
   filter :post_id, :integer do
     eq do |scope, value|
-      scope.eager_load(:leaders_commented_posts).where(:comments => {:post_id => value})
+      scope.eager_load(:leaders_commented_posts).where(comments: { post_id: value })
     end
   end
 
   filter :author_id, :integer do
     eq do |scope, value|
-      scope.eager_load(:leaders_own_posts).where(:posts => {:author_id => value})
+      scope.eager_load(:leaders_own_posts).where(posts: { author_id: value })
     end
   end
 
   filter :follower_id, :integer do
     eq do |scope, value|
-      scope.eager_load(:followers).where(:follows => {:follower_id => value})
+      scope.eager_load(:followers).where(follows: { follower_id: value })
     end
   end
 
   filter :leader_id, :integer do
     eq do |scope, value|
-      scope.eager_load(:leaders).where(:follows => {:leader_id => value})
+      scope.eager_load(:leaders).where(follows: { leader_id: value })
     end
   end
 end
