@@ -16,7 +16,7 @@
 
     <%= f.label :bookmarker_id %>
     <!-- Input for bookmarker_id start -->
-    <%= f.number_field :bookmarker_id, class: bookmarker_class, placeholder: "Enter bookmarker" %>
+    <%= f.collection_select :bookmarker_id, User.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for bookmarker_id end -->
     <% if bookmarker_was_invalid %>
       <% bookmark.errors.full_messages_for(:bookmarker).each do |message| %>
