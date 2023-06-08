@@ -12,6 +12,9 @@ class UserResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :comments,
+             foreign_key: :commenter_id
+
   has_many   :own_posts,
              resource: PostResource,
              foreign_key: :author_id
