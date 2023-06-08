@@ -16,6 +16,10 @@ class Post < ApplicationRecord
 
   # Indirect associations
 
+  has_many   :bookmarkers,
+             :through => :bookmarks,
+             :source => :bookmarker
+
   has_many   :author_followers,
              :through => :author,
              :source => :followers

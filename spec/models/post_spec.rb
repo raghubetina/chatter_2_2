@@ -16,6 +16,8 @@ RSpec.describe Post, type: :model do
 
     describe "InDirect Associations" do
 
+    it { should have_many(:bookmarkers) }
+
     it { should have_many(:author_followers) }
 
     it { should have_many(:fans_followers) }

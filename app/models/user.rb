@@ -30,6 +30,10 @@ class User < ApplicationRecord
 
   # Indirect associations
 
+  has_many   :bookmarked_posts,
+             :through => :bookmarks,
+             :source => :post
+
   has_many   :leaders_own_posts,
              :through => :leaders,
              :source => :own_posts
