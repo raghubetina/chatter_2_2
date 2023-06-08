@@ -35,6 +35,14 @@ class UserResource < ApplicationResource
 
   # Indirect associations
 
+  has_many :leaders_liked_posts, resource: PostResource do
+    assign_each do |user, posts|
+      posts.select do |p|
+        p.id.in?(user.leaders_liked_posts.map(&:id))
+      end
+    end
+  end
+
   has_many :leaders_bookmarked_posts, resource: PostResource do
     assign_each do |user, posts|
       posts.select do |p|
