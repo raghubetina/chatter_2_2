@@ -30,6 +30,10 @@ class User < ApplicationRecord
 
   # Indirect associations
 
+  has_many   :leaders_own_posts,
+             :through => :leaders,
+             :source => :own_posts
+
   has_many   :leaders_liked_posts,
              :through => :leaders,
              :source => :liked_posts
