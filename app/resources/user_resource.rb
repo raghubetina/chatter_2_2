@@ -35,4 +35,18 @@ class UserResource < ApplicationResource
 
   # Indirect associations
 
+  has_many :leaders_commented_posts, resource: PostResource do
+    assign_each do |user, posts|
+      posts.select do |p|
+        p.id.in?(user.leaders_commented_posts.map(&:id))
+      end
+    end
+  end
+
+
+  filter :post_id, :integer do
+    eq do |scope, value|
+      scope.eager_load(:leaders_commented_posts).where(:comments => {:post_id => value})
+    end
+  end
 end
