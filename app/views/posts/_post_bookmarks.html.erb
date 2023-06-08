@@ -1,0 +1,35 @@
+<div class="card">
+  <div class="card-header d-flex align-items-center justify-content-between">
+    Bookmarks
+
+    <a data-toggle="collapse" href="#post_bookmarks_new_form">
+      Add bookmark
+    </a>
+  </div>
+
+  <ul class="list-group list-group-flush">
+    <% @post.bookmarks.each do |bookmark| %>
+      <li class="list-group-item d-flex align-items-center justify-content-between">
+        <!-- Show link start -->
+        <%= link_to bookmark, bookmark %>
+        <!-- Show link end -->
+
+        <!-- Delete link start -->
+        <%= link_to bookmark, method: :delete, data: { confirm: "Do you really want to delete this bookmark" } do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+        <!-- Delete link end -->
+
+      </li>
+    <% end %>
+
+    <div class="card-footer">
+      <div class="collapse" id="post_bookmarks_new_form">
+        <!-- New associationcollection form start -->
+
+        <!-- New associationcollection form end -->
+      </div>
+    </div>
+
+  </ul>
+</div>

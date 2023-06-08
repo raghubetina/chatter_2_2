@@ -1,0 +1,29 @@
+<div class="card">
+  <div class="card-header d-flex align-items-center justify-content-between">
+    Follows As Leader
+
+    <a data-toggle="collapse" href="#user_follows_as_leader_new_form">
+      Add follow
+    </a>
+  </div>
+
+  <ul class="list-group list-group-flush">
+    <% @user.follows_as_leader.each do |follow| %>
+      <li class="list-group-item d-flex align-items-center justify-content-between">
+        <!-- Show link start -->
+        <%= link_to follow, follow %>
+        <!-- Show link end -->
+
+      </li>
+    <% end %>
+
+    <div class="card-footer">
+      <div class="collapse" id="user_follows_as_leader_new_form">
+        <!-- New associationcollection form start -->
+
+        <!-- New associationcollection form end -->
+      </div>
+    </div>
+
+  </ul>
+</div>

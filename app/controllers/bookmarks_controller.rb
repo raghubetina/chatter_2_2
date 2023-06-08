@@ -42,8 +42,14 @@ class BookmarksController < ApplicationController
   # DELETE /bookmarks/1
   def destroy
     @bookmark.destroy
-    redirect_to bookmarks_url, notice: 'Bookmark was successfully destroyed.'
+    message = "Bookmark was successfully deleted."
+    if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+      redirect_back fallback_location: request.referrer, notice: message
+    else
+      redirect_to bookmarks_url, notice: message
+    end
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
