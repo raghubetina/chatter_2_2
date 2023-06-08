@@ -12,6 +12,9 @@ class UserResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :bookmarks,
+             foreign_key: :bookmarker_id
+
   has_many   :likes,
              foreign_key: :fan_id
 
