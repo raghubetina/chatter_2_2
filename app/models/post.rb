@@ -1,6 +1,9 @@
 class Post < ApplicationRecord
   # Direct associations
 
+  has_many   :comments,
+             :dependent => :destroy
+
   belongs_to :author,
              :class_name => "User",
              :counter_cache => :own_posts_count
