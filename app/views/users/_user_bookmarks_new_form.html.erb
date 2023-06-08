@@ -13,7 +13,7 @@
     <%= f.label :post_id %>
 
     <!-- Input for post_id start -->
-    <%= f.text_field :post_id, class: "form-control" %>
+    <%= f.collection_select :post_id, Post.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for post_id end -->
   </div>
   <!-- Label and input for post_id end -->
