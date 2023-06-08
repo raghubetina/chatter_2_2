@@ -4,6 +4,8 @@ RSpec.describe Follow, type: :model do
   
     describe "Direct Associations" do
 
+    it { should belong_to(:follower) }
+
     it { should belong_to(:leader) }
 
     end
