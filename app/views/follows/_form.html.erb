@@ -16,7 +16,7 @@
 
     <%= f.label :leader_id %>
     <!-- Input for leader_id start -->
-    <%= f.number_field :leader_id, class: leader_class, placeholder: "Enter leader" %>
+    <%= f.collection_select :leader_id, User.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for leader_id end -->
     <% if leader_was_invalid %>
       <% follow.errors.full_messages_for(:leader).each do |message| %>
