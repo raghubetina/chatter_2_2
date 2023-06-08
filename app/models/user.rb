@@ -30,6 +30,14 @@ class User < ApplicationRecord
 
   # Indirect associations
 
+  has_many   :followers,
+             :through => :follows_as_leader,
+             :source => :follower
+
+  has_many   :leaders,
+             :through => :follows_as_follower,
+             :source => :leader
+
   has_many   :commented_posts,
              :through => :comments,
              :source => :post
