@@ -12,6 +12,10 @@ class UserResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :follows_as_leader,
+             resource: FollowResource,
+             foreign_key: :leader_id
+
   # Indirect associations
 
 end
