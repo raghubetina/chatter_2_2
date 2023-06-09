@@ -32,7 +32,7 @@ class Like < ApplicationRecord
 
   # Validations
 
-  validates :user_id,
+  validates :fan_id,
     uniqueness: { 
       scope: :post_id,
       message: "has already liked this post"

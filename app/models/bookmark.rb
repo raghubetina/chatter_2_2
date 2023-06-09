@@ -32,7 +32,7 @@ class Bookmark < ApplicationRecord
 
   # Validations
 
-  validates :user_id,
+  validates :bookmarker_id,
     uniqueness: { 
       scope: :post_id,
       message: "has already bookmarked this post"

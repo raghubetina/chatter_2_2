@@ -104,6 +104,8 @@ class User < ApplicationRecord
     length: { maximum: 15},
     format: { with: /\A[A-Za-z0-9_]+\z/, message: "can only contain letters, numbers, and underscores" }
 
+  validates :bio, length: { maximum: 280 }, allow_blank: true
+  
   # Scopes
 
   def to_s
